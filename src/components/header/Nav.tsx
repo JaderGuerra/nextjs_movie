@@ -13,8 +13,8 @@ export const Nav = ({ label, path }: Props) => {
     <>
       <Link
         href={path}
-        className={`block py-2 pr-4 pl-3  rounded md:bg-transparent md:p-0 dark:text-white ${
-          currentPath === path && "bg-blue-800 md:text-blue-700"
+        className={`block py-2 pr-4 pl-3 rounded md:p-2 dark:text-white ${
+          currentPath === path && "bg-emerald-500 text-white"
         }`}
         aria-current="page"
       >

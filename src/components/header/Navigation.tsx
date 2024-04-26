@@ -46,7 +46,7 @@ export const Navigation = () => {
       </div>
 
       <div
-        className={`w-full md:block md:w-auto ${
+        className={`w-full md:flex md:items-center md:w-auto ${
           isMobileMenuOpen ? "" : "hidden"
         }`}
         id="mobile-menu"
