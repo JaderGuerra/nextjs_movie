@@ -1,5 +1,5 @@
 import { CardMovie } from "@/movies/components";
-import { Movie, MoviesResponse } from "@/movies/interface/movies";
+import { Movie, MoviesResponse } from "@/movies/interface";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
