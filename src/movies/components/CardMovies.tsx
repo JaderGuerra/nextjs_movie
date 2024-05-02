@@ -1,14 +1,14 @@
 import Image from "next/image";
 import { Movie } from "../interface/movies";
 import { fullPath, truncateText } from "@/helper";
+import Link from "next/link";
 
-interface Props{
-  movie:Movie
+interface Props {
+  movie: Movie;
 }
 
-export const CardMovie = async ({movie}:Props) => {
+export const CardMovie = async ({ movie }: Props) => {
   return (
-    
     <div className="max-w-sm w-96bg-white min-h-[544px] border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 md:w-64">
       <Image
         className="rounded-t-lg aspect-square w-full"
@@ -26,18 +26,20 @@ export const CardMovie = async ({movie}:Props) => {
           {truncateText(movie.overview, 130)}
         </p>
         <div className="flex justify-between items-center">
-          <button className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-            Read more
-            <svg
-              className="rtl:rotate-180 w-3.5 h-3.5 ms-2"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 14 10"
-            >
-              <path stroke="currentColor" d="M1 5h12m0 0L9 1m4 4L9 9"></path>
-            </svg>
-          </button>
+          <Link href={`/movie/${movie.title}`}>
+            <button className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+              Read more
+              <svg
+                className="rtl:rotate-180 w-3.5 h-3.5 ms-2"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 14 10"
+              >
+                <path stroke="currentColor" d="M1 5h12m0 0L9 1m4 4L9 9"></path>
+              </svg>
+            </button>
+          </Link>
           <button>
             <svg
               className="w-6 h-6 text-gray-800 dark:text-white"
