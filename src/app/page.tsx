@@ -1,13 +1,22 @@
-import { CardMovie } from "@/components/movies/CardMovies";
-import { CardSkeleton } from "@/components/movies/CardSkeleton";
+import { CardMovie } from "@/movies/components";
+import { Movie, MoviesResponse } from "@/movies/interface/movies";
 
-const moviesLength = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+const getPopular = async (): Promise<Movie[]> => {
+  const url = "https://api.themoviedb.org/3/movie/popular";
+  const response: MoviesResponse = await fetch(
+    `${url}?language=en-US&page=1&api_key=a97061e35b0b95cc28f22973518df71c`
+  ).then((resp) => resp.json());
 
-export default function Home() {
+  return response.results;
+};
+
+export default async function Home() {
+  const movies = await getPopular();
+
   return (
-    <main className="mt-5 flex justify-center flex-wrap gap-3 max-w-screen-xl mx-auto md:gap-9 dark:bg-gray-800">
-      {moviesLength.map((movie) => (
-        <CardMovie key={movie} />
+    <main className="mt-5 flex justify-center flex-wrap gap-3 max-w-screen-xl mx-auto md:gap-9">
+      {movies.map((movie) => (
+        <CardMovie key={movie.id} movie={movie} />
       ))}
     </main>
   );

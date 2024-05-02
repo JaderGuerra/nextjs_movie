@@ -1,22 +1,29 @@
 import Image from "next/image";
-export const CardMovie = () => {
+import { Movie } from "../interface/movies";
+import { fullPath, truncateText } from "@/helper";
+
+interface Props{
+  movie:Movie
+}
+
+export const CardMovie = async ({movie}:Props) => {
   return (
+    
     <div className="max-w-sm w-96bg-white min-h-[544px] border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 md:w-64">
       <Image
         className="rounded-t-lg aspect-square w-full"
-        src="https://image.tmdb.org/t/p/original/fSY6BYUZMObTIzPfRBlhuAb5lsd.jpg"
+        src={fullPath(movie?.poster_path)}
         alt="Poster Img"
-        priority
+        priority={false}
         width={300}
         height={450}
       />
       <div className="p-5">
         <h5 className="mb-2 text-xl	md:text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-          Atrapados en el abismo
+          {movie.title}
         </h5>
         <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-          Esta película sigue a personajes de orígenes muy diferentes que se
-          juntan cuando el avión en el que viajan se estrella en el Oc...
+          {truncateText(movie.overview, 130)}
         </p>
         <div className="flex justify-between items-center">
           <button className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
