@@ -1,3 +1,4 @@
+import { CardMovieDetails } from "@/movies/components/CardMovieDetails";
 import { SimpleMovie } from "@/movies/interface";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -16,15 +17,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   } catch (error) {
     return {
       title: "Pelicupa popular",
-      description: `Pelicupa popular`,
+      description: `Obtén información detallada sobre esta película, incluyendo el elenco, la trama y las críticas`,
     };
   }
 }
 
 const getMovie = async (name: string, id: string): Promise<SimpleMovie> => {
+  const key = process.env.API_KEY;
   try {
     const response = await fetch(
-      ` https://api.themoviedb.org/3/movie/${id}?language=en-US&api_key=a97061e35b0b95cc28f22973518df71c`,
+      ` https://api.themoviedb.org/3/movie/${id}?language=en-US&api_key=${key}`,
       {
         //cache: "force-cache",
         next: { revalidate: 60 * 60 * 30 * 6 },
@@ -43,8 +45,6 @@ export default async function MoviePage({ params }: Props) {
   console.dir(`MOVIE -> ${movie?.title}`);
 
   return (
-    <>
-      <h1>{movie?.title}</h1>
-    </>
+    <CardMovieDetails movie={movie}/>
   );
 }
