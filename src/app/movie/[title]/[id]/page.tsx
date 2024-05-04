@@ -45,6 +45,8 @@ export default async function MoviePage({ params }: Props) {
   console.dir(`MOVIE -> ${movie?.title}`);
 
   return (
-    <CardMovieDetails movie={movie}/>
+    <div className="py-4 max-w-[2200px] dark:bg-gray-800 min-h-[100vh] md:flex md:justify-center md:items-center">
+      <CardMovieDetails movie={movie} />
+    </div>
   );
 }

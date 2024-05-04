@@ -19,10 +19,10 @@ export default async function Home() {
   const movies = await getPopular();
 
   return (
-    <main className="p-4 mt-5 flex justify-center flex-wrap gap-3 max-w-screen-xl mx-auto md:gap-9">
+    <div className="p-4 flex justify-center flex-wrap gap-3 md:max-w-screen-xl mx-auto md:gap-9">
       {movies.map((movie) => (
         <CardMovie key={movie.id} movie={movie} />
       ))}
-    </main>
+    </div>
   );
 }

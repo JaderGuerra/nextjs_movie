@@ -9,10 +9,10 @@ interface Props {
 
 export const CardMovie = async ({ movie }: Props) => {
   return (
-    <div className="max-w-sm w-96bg-white min-h-[544px] border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 md:w-64">
+    <div className="w-[350px] bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 md:w-[380px]">
       <Image
-        className="rounded-t-lg aspect-square w-full"
-        src={fullPath(movie?.poster_path)}
+        className="rounded-t-lg w-full"
+        src={fullPath(movie?.backdrop_path)}
         alt="Poster Img"
         priority={false}
         width={300}
@@ -60,4 +60,4 @@ export const CardMovie = async ({ movie }: Props) => {
       </div>
     </div>
   );
-};
+}; 
